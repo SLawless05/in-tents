@@ -22,6 +22,6 @@ The goal of the project is to provide a resource where adventurers of all kinds 
 
 ![](in-tents/app/public/images/Mock1.png)
 
-![](images/Mock2.png)
+![](in-tents/app/public/images/Mock2.png)
 
-![](images/Mock3.png)
+![](in-tents/app/public/images/Mock3.png)
