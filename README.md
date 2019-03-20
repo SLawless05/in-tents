@@ -19,3 +19,9 @@ The goal of the project is to provide a resource where adventurers of all kinds 
 
 
 ## Mock ups
+
+![](images/Mock1.png)
+
+![](images/Mock2.png)
+
+![](images/Mock3.png)
