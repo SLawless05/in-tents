@@ -1,0 +1,35 @@
+{
+  "name": "in-tents",
+  "version": "1.0.0",
+  "description": "## Goal The goal of the project is to provide a resource where adventurers of all kinds can search for national parks to get up to date park information and recieve alters for changes to park, trail, or campground availability.",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'app/*'\" \"yarn client\"",
+    "client": "cd app && yarn start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd app && yarn",
+    "build": "cd app && yarn build",
+    "heroku-postbuild": "yarn build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "jwt-simple": "^0.5.5",
+    "moment": "^2.23.0",
+    "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
