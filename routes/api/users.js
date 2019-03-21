@@ -3,13 +3,13 @@ const users = require("../../config/connection");
 
 // Matches with "/api/books"
 router.route("/")
-  .get(users.findAll)
+  .get(users.findById)
   .post(users.create);
 
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(users.findById)
+  .get(users.findAll)
   .put(users.update)
   .delete(users.remove);
 
