@@ -32,9 +32,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import search from "./pages/search";
 import home from "./pages/home";
 import profile from "./pages/profile";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
+import Navbar from "./components/common/Nav/Navbar";
+import Footer from "./components/common/Nav/footer";
+import Wrapper from "./components/pages/Wrapper";
 
 function App() {
   return (
