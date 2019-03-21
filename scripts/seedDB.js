@@ -12,7 +12,7 @@ mongoose.connect(
 const UserSeed = [
     {
         username: "The Dead Zone",
-        password: "Stephen King",
+        password: "##############",
         savedPlaces:[],
         date: new Date(Date.now())
     }
