@@ -29,12 +29,12 @@
 
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import search from "./pages/search";
-import home from "./pages/home";
-import profile from "./pages/profile";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
+// import search from "./pages/search";
+import Home from "./components/pages/home/Home.js";
+// import profile from "./components/pages/profile";
+import Navbar from "./components/common/Nav/Navbar";
+import Footer from "./components/common/Nav/footer";
+import Wrapper from "./components/pages/Wrapper";
 
 function App() {
   return (
@@ -42,10 +42,10 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/" component={home} />
-          <Route exact path="/home" component={home} />
-          <Route exact path="/profile" component={profile} />
-          <Route exact path="/search" component={search} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Home" component={Home} />
+          {/* <Route exact path="/profile" component={profile} /> */}
+          {/* <Route exact path="/search" component={search} /> */}
         </Wrapper>
         <Footer />
       </div>
