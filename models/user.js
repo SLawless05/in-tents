@@ -5,7 +5,8 @@ const bcrypt = require("bcryptjs");
 const UserSchema = new Schema({
     email: { type: String, required: true, lowercase: true },
     password: String,
-    favorites: Array
+    savedPlaces: [],
+    date: { type: Date, default: Date.now }
 });
 
 // On save hook, encrypt password
@@ -35,6 +36,7 @@ UserSchema.methods.comparePassword = function (candidatePassword, callback) {
     });
 };
 
-const UserModel = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", usersSchema);
 
-module.exports = UserModel;
+module.exports = User;
+
