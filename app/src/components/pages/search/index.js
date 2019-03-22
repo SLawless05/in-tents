@@ -21,12 +21,7 @@ function search() {
         backgroundSize: "cover"
       }}
     ></div>
-      {/* <div className="bgimg-2 w3-display-container w3-opacity-min" >
-        <div className="w3-display-middle" style={{opacity: .5}}>
-          <span className="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
-        </div>
-      </div> */}
-      <div className="w3-content w3-container w3-padding-64" id="portfolio">
+      <div className="w3-content w3-container w3-padding-64" id="portfolio" >
         <h3 className="w3-center">IN-TENTS FAVORITES</h3>
         <p className="w3-center">
           <em>
@@ -114,8 +109,8 @@ function search() {
             />
           </div>
           <button
-            className="w3-button w3-padding-large w3-light-grey"
-            style={{ marginTop: "64px" }}
+            className="w3-button w3-padding-large"
+            style={{ marginTop: "64px", backgroundColor: "#825696" }}
           >
             Search your favorite national park
           </button>
