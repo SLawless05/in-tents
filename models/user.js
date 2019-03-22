@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
-    savedPlaces: [],
+    savedPlaces: Array,
     date: { type: Date, default: Date.now }
   });
   
