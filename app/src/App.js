@@ -29,7 +29,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import search from "./pages/search";
+import search from "./components/pages/search"; 
 import Home from "./components/pages/home/Home.js";
 // import profile from "./components/pages/profile";
 import Navbar from "./components/common/Nav/Navbar";
@@ -41,11 +41,11 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <Wrapper>
+        <Wrapper style={{paddingBottom: 0}}>
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
           {/* <Route exact path="/profile" component={profile} /> */}
-          {/* <Route exact path="/search" component={search} /> */}
+          <Route exact path="/search" component={search} />
         </Wrapper>
         <Footer />
       </div>
