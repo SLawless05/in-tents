@@ -15,7 +15,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 const db = require("./config/connection");
-db(process.env.MONGODB_URI || "mongodb://localhost/users");
+db(process.env.MONGODB_URI || "mongodb://localhost/User");
 
 // Start the API server
 app.listen(PORT, function() {

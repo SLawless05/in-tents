@@ -3,21 +3,22 @@ const db = require("../models");
 
 
 mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb://localhost/User"
+  process.env.MONGODB_URI ||
+  "mongodb://localhost/User"
 );
 
-const userSeed = {
-    username: "The Dead Zone",
-        password: "##############",
-        savedPlaces:[],
-        date: new Date(Date.now())
+const userSeed = [
+  {
+  username: "The Dead Zone",
+  password: "##############",
+  date: new Date(Date.now())
 }
+]
 
 
 db.User
   .remove({})
-  .then(() => db.user.collection.insertMany(userSeed))
+  .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log("records inserted!");
     process.exit(0);
