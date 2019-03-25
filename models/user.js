@@ -2,18 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
-<<<<<<< HEAD
-const usersSchema = new Schema({
-  username: { type: String, required: true },
-  password: { type: String, required: true },
-  savedPlaces: Array,
-  date: { type: Date, default: Date.now }
-});
-
-const User = mongoose.model("user", usersSchema);
-
-module.exports = User;
-=======
 const UserSchema = new Schema({
     email: { type: String, required: true, lowercase: true },
     password: String,
@@ -51,5 +39,3 @@ UserSchema.methods.comparePassword = function (candidatePassword, callback) {
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
-
->>>>>>> cbadbadf9b19fd3350663463ab226ac0296110e1
