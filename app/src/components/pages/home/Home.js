@@ -21,10 +21,8 @@ function Home() {
       }}
     >
       <div className="w3-display-middle" style={{ whiteSpace: "nowrap" }}>
-        <img src="images/in-tentswhite.png" alt="logo"/>
+        <img src="images/in-tentswhite.png" alt="logo" />
       </div>
-      
-      <div />
     </div>
   );
 }

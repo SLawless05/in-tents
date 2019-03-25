@@ -9,7 +9,7 @@ function about() {
         style={{
           backgroundImage:
             "url('https://media.blogto.com/articles/2017725-lake-superior.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70')",
-          minHeight: "50vh",
+          minHeight: "40vh",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -17,7 +17,7 @@ function about() {
         }}
       />
 
-      <div className="w3-content w3-container w3-padding-64" id="about">
+      <div className="w3-content w3-container w3-padding-65" id="about">
         <h3 className="w3-center">ABOUT IN-TENTS</h3>
         <p className="w3-center">
           <em>We love the outdoors!</em>
@@ -38,8 +38,7 @@ function about() {
         </p>
         <div className="w3-center">
         <button
-          className="w3-button w3-padding-large"
-          style={{textAlign: "center", margin: "auto", backgroundColor: "#825696"}}
+          className="w3-button w3-padding-large w3-black" style={{opacity: "0.6"}}
         >
           Get started
         </button>
