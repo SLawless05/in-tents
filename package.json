@@ -33,12 +33,9 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
-    "if-env": "^1.0.4"
-=======
+    "if-env": "^1.0.4",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "yarn": "^1.13.0"
->>>>>>> cbadbadf9b19fd3350663463ab226ac0296110e1
   }
 }
