@@ -9,10 +9,15 @@ mongoose.connect(
 
 const userSeed = [
   {
-  username: "The Dead Zone",
-  password: "##############",
-  date: new Date(Date.now())
-}
+    username: "The Dead Zone",
+    password: "##############",
+    date: new Date(Date.now())
+  },
+  {
+    username: "Sunny",
+    password: "#########",
+    date: new Date(Date.now())
+  }
 ]
 
 
