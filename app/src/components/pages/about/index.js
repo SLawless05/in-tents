@@ -9,7 +9,7 @@ function about() {
         style={{
           backgroundImage:
             "url('https://media.blogto.com/articles/2017725-lake-superior.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70')",
-          minHeight: "50vh",
+          minHeight: "40vh",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -17,12 +17,12 @@ function about() {
         }}
       />
 
-      <div className="w3-content w3-container w3-padding-64" id="about">
+      <div className="w3-content w3-container w3-padding-65" id="about">
         <h3 className="w3-center">ABOUT IN-TENTS</h3>
-        <p className="w3-center">
+        <p className="w3-center" >
           <em>We love the outdoors!</em>
         </p>
-        <p className>
+        <p className >
           At In-Tents, we're a bit intense about our love for all things outdoor
           and adventure! We know that when planning your great adventures it's
           important to make sure the national park you want to visit is open,
@@ -37,12 +37,13 @@ function about() {
           and start exploring!{" "}
         </p>
         <div className="w3-center">
-        <button
-          className="w3-button w3-padding-large"
-          style={{textAlign: "center", margin: "auto", backgroundColor: "#825696"}}
-        >
-          Get started
-        </button>
+        <div><a href={"/profile"}>
+          <button
+            className="w3-button w3-padding-large w3-black"
+            style={{ opacity: "0.6" }}
+          >
+            Get started
+          </button></a></div>
         </div>
       </div>
     </div>
