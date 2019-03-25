@@ -1,3 +1,5 @@
+require("dotenv").config();
+//Express
 const express = require("express");
 const routes = require("./routes");
 const app = express();
@@ -18,6 +20,6 @@ const db = require("./config/connection");
 db(process.env.MONGODB_URI || "mongodb://localhost/User");
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
