@@ -84,7 +84,7 @@ function profile(props) {
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
-        </Typography>
+            </Typography>
             <form className={classes.form}>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -104,9 +104,15 @@ function profile(props) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+              // onClick={() => {
+              //   if (password === rePassword) {
+              //     console.log("Made it");
+              //     props.signup(email, password);
+              //   }
+              // }}
               >
                 Sign in
-          </Button>
+              </Button>
             </form>
           </Paper>
         </main>
