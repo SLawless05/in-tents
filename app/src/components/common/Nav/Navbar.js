@@ -5,26 +5,18 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <div className="w3-top">
-      <div className="w3-row w3-padding w3-black" style={{opacity: "0.6"}}>
+      <div className="w3-row w3-padding w3-black" style={{opacity: "0.6", fontFamily: "Sorts Mill Goudy"}}>
         <div className="w3-col s3" >
-          <a href="/" className="w3-button w3-block w3-black">
-            HOME
-          </a>
+        <Link to="/" className="w3-button w3-block w3-black">HOME</Link>
         </div>
         <div className="w3-col s3">
-          <a href="about" className="w3-button w3-block w3-black">
-            ABOUT
-          </a>
+        <Link to="/about" className="w3-button w3-block w3-black">ABOUT</Link>
         </div>
         <div className="w3-col s3">
-          <a href="search" className="w3-button w3-block w3-black">
-            SEARCH
-          </a>
+        <Link to="/search" className="w3-button w3-block w3-black">SEARCH</Link>
         </div>
         <div className="w3-col s3">
-          <a href="profile" className="w3-button w3-block w3-black">
-            PROFILE
-          </a>
+        <Link to="/profile" className="w3-button w3-block w3-black">PROFILE</Link>
         </div>
       </div>
     </div>
