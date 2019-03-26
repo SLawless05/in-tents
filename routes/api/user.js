@@ -4,9 +4,10 @@ const User = require("../../controllers/userControllers");
 router.route("/profile")
   .get(User.findById)
   .post(User.create);
+router.route("/profile/:id")
+  .get(User.findOneById)
 router
   .route("/profile/favorites/")
-  .get(User.findAll)
   .put(User.update);
 router
   .route("/profile/favorites/:id")

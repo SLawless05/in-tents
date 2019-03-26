@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const UserSchema = new Schema({
     email: { type: String, required: true, lowercase: true },
     password: String,
-    savedPlaces: [],
+    savedPlaces: Array,
     date: { type: Date, default: Date.now }
 });
 
