@@ -11,6 +11,8 @@ function search() {
   const [modalActive, showModal] = useState();
   const [modalData, setModalData] = useState({});
   const [parkData, setPark] = useState();
+  const [userParks, setUserParks] = useState([]);
+
   function onImgClick(e) {
     setModalData({
       src: e.target.src,
@@ -77,26 +79,37 @@ function search() {
               list="parks"
               type="text"
               className="form-control"
+              value={parkData}
               onChange={e => setPark(e.target.value)}
               id="park"
             />
             <button
-              onClick={() => console.log(parkData, parks[parkData])}
+              onClick={() => {
+                setUserParks([...userParks, parkData]);
+                setPark("");
+              }}
               style={{ marginLeft: "10px" }}
             >
               Add Park
             </button>
+            <div className="w3-row">
+              <div className="w3-col s3 w3-center" id="alert" />
+              <div className="w3-col s9 w3-center" id="parkInfo" />
+            </div>
           </div>
-          <hr />
           <datalist id="parks">
             {Object.keys(parks).map(park => (
               <option value={park} key={park} />
             ))}
           </datalist>
+          {userParks.length !== 0 && userParks.map(park => <p>{park}</p>)}
+          <hr />
           {/* <button onClick={() => console.log(parkData, parks[parkData])}>Testing</button> */}
           <br />
           {/* End Testing */}
-          <h3 className="w3-center" style={{fontFamily: "Sorts Mill Goudy",}}>NEED SOME IN-TENTS INSPIRATION?</h3>
+          <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy" }}>
+            NEED SOME IN-TENTS INSPIRATION?
+          </h3>
           <p className="w3-center">
             <em>
               Not sure where to go on your next adventure? Check out some of our
