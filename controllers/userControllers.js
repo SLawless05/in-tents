@@ -32,6 +32,3 @@ module.exports = {
     }
 };
 
-
-
-// db.test.update({"heros.nickname":"test", "heros.spells.spell_id":1}, {$set:{"heros.0.spells.1.level":3}});
