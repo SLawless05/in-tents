@@ -8,13 +8,11 @@ const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
 
 router.route("/profile")
-  .get(User.findById)
   .post(User.create);
-router
-  .route("/profile/favorites/")
-  .get(User.findAll)
+router.route("/profile/:id")
+  .get(User.findOneById)
   .put(User.update);
-router
+  router
   .route("/profile/favorites/:id")
   .delete(User.remove);
 

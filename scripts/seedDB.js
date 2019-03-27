@@ -11,11 +11,13 @@ const userSeed = [
   {
     username: "The Dead Zone",
     password: "##############",
+    savedPlaces: ["Yosemite National Park", "Grand Canyon National Park", "YellowStone National Park", "Petrified Forest National Park", "Suguaro National Park"],
     date: new Date(Date.now())
   },
   {
     username: "Sunny",
     password: "#########",
+    savedPlaces: ["Yosemite National Park", "YellowStone National Park", "Petrified Forest National Park", "Suguaro National Park"],
     date: new Date(Date.now())
   }
 ]
