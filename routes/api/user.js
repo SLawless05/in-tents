@@ -2,14 +2,11 @@ const router = require("express").Router();
 const User = require("../../controllers/userControllers");
 
 router.route("/profile")
-  .get(User.findById)
   .post(User.create);
 router.route("/profile/:id")
   .get(User.findOneById)
-router
-  .route("/profile/favorites/")
   .put(User.update);
-router
+  router
   .route("/profile/favorites/:id")
   .delete(User.remove);
 

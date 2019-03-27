@@ -8,16 +8,9 @@ module.exports = {
             .catch(err => res.status(422).json(err));
         // creating the user accout
     },
-    findById: function (req, res) {
-        db.User
-            .findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        // when login find the specific profile using the id given to it 
-    },
     update: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id }, req.body)
+            .findOneAndUpdate({ _id: req.params.id }, {$push:{savedPlaces: req.body.newPlace}})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
         // updating the favorite locations to contain any that are added
@@ -38,3 +31,7 @@ module.exports = {
         // removing a favorite location from a profile 
     }
 };
+
+
+
+// db.test.update({"heros.nickname":"test", "heros.spells.spell_id":1}, {$set:{"heros.0.spells.1.level":3}});
