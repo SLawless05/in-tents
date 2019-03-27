@@ -18,11 +18,11 @@ function about() {
       />
 
       <div className="w3-content w3-container w3-padding-65" id="about">
-        <h3 className="w3-center">ABOUT IN-TENTS</h3>
-        <p className="w3-center" >
-          <em>We love the outdoors!</em>
+        <h1 className="w3-center" style={{fontFamily: "Sorts Mill Goudy"}}>ABOUT IN-TENTS</h1>
+        <p className="w3-center" style={{fontFamily: "Sorts Mill Goudy"}}>
+          <h3 style={{fontFamily: "Sorts Mill Goudy"}}>We love the outdoors!</h3>
         </p>
-        <p className >
+        <p className style={{fontFamily: "Sorts Mill Goudy", fontSize: "20px"}} >
           At In-Tents, we're a bit intense about our love for all things outdoor
           and adventure! We know that when planning your great adventures it's
           important to make sure the national park you want to visit is open,
@@ -32,7 +32,7 @@ function about() {
           real time alerts for weather, road closures, and campsite reservations
           so you can go confidently into the wild.
         </p>
-        <p className="w3-center">
+        <p className="w3-center" style={{fontFamily: "Sorts Mill Goudy", fontSize: "20px"}}>
           Earth is beautiful, we want to help you explore it. Create a profile
           and start exploring!{" "}
         </p>
@@ -40,7 +40,7 @@ function about() {
         <div><a href={"/profile"}>
           <button
             className="w3-button w3-padding-large w3-black"
-            style={{ opacity: "0.6" }}
+            style={{ opacity: "0.6", fontFamily: "Sorts Mill Goudy"}}
           >
             Get started
           </button></a></div>
