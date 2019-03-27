@@ -6,19 +6,33 @@ const config = require("../../config");
 const passport = require("passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
-const axios = require("axios")
+const axios = require("axios");
 
-router.route("/profile")
-  .post(User.create);
-router.route("/profile/:id")
+router.route("/profile").post(User.create);
+router
+  .route("/profile/:id")
   .get(User.findOneById)
   .put(User.update);
-  router
-  .route("/profile/favorites/:id")
-  .delete(User.remove);
-router.route("/search", function(req, res){
-  
-})
+
+router.route("/profile/favorites/:id").delete(User.remove);
+
+router.route("/search/:parkid").get(function(req, res) {
+  var api_key = "NkBMV8ML8wzt4kc1GupeltXUV2R4bq5sllZv6eSy";
+  var parkURL =
+    "https://developer.nps.gov/api/v1/parks?parkCode=" +
+    req.params.parkid +
+    "&api_key=" +
+    api_key;
+  var alertURL =
+    "https://developer.nps.gov/api/v1/alerts?parkCode=" +
+    req.params.parkid +
+    "&api_key=" +
+    api_key;
+  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results =>{
+    res.json({ parks: results[0].data, alerts: results[1].data })
+  });
+});
+
 function tokenizer(user) {
   return jwt.sign(
     {
@@ -28,19 +42,19 @@ function tokenizer(user) {
   );
 }
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.send("Welcome to the v1 routes!");
 });
 
-router.get("/protected", requireAuth, function (req, res) {
+router.get("/protected", requireAuth, function(req, res) {
   res.send("You have been protected!");
 });
 
-router.post("/signin", requireSignin, function (req, res) {
+router.post("/signin", requireSignin, function(req, res) {
   res.json({ token: tokenizer(req.user) });
 });
 
-router.post("/signup", function (req, res) {
+router.post("/signup", function(req, res) {
   const { email, password } = req.body;
 
   if (!email || !password) {
