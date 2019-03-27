@@ -6,6 +6,7 @@ const config = require("../../config");
 const passport = require("passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
+const axios = require("axios")
 
 router.route("/profile")
   .post(User.create);
@@ -15,7 +16,18 @@ router.route("/profile/:id")
   router
   .route("/profile/favorites/:id")
   .delete(User.remove);
+router.route("/search", function(req, res){
+  var queryURL= "https://developer.nps.gov/api/v1/parks?parkCode="+ parkCode +"&api_key=" + api_key;
+  var queryURL2= "https://developer.nps.gov/api/v1/alerts?parkCode="+ parkCode +"&api_key=" + api_key;
+  var api_key = "NkBMV8ML8wzt4kc1GupeltXUV2R4bq5sllZv6eSy"
+  axios.get(queryURL).then(res =>{
+    var location = res.data;
+    <h1>Park Name: </h1>
+  })
+  axios.get(queryURL2).then(res =>{
 
+  })
+})
 
 function tokenizer(user) {
   return jwt.sign(
