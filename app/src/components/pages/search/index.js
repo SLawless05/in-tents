@@ -3,10 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 import Modal from "../../modals";
+import Container from "../../Container";
+import parks from "./parks";
+// import Dropdown from "../../Dropdown";
 
 function search() {
   const [modalActive, showModal] = useState();
   const [modalData, setModalData] = useState({});
+  const [parkData, setPark] = useState();
   function onImgClick(e) {
     setModalData({
       src: e.target.src,
@@ -34,10 +38,69 @@ function search() {
           id="portfolio"
           style={{ backgroundColor: "rbga(255, 255, 255, 0.5)" }}
         >
-          <h3 className="w3-center">IN-TENTS FAVORITES</h3>
+          <div>
+            <h1
+              style={{
+                textAlign: "center",
+                display: "block",
+                fontFamily: "Sorts Mill Goudy",
+                fontSize: "55px"
+              }}
+            >
+              Adventure Time
+            </h1>
+          </div>
+          <div>
+            <h3
+              style={{
+                textAlign: "center",
+                display: "block",
+                fontFamily: "Sorts Mill Goudy",
+                fontSize: "20px"
+              }}
+            >
+              Search parks in the dropdown menu below
+            </h3>
+          </div>
+
+          {/* Start Testing */}
+          <div
+            style={{
+              textAlign: "center",
+              display: "block",
+              fontFamily: "Sorts Mill Goudy"
+            }}
+          >
+            <label htmlFor="park">National Parks: </label>
+            <input
+              name="park"
+              list="parks"
+              type="text"
+              className="form-control"
+              onChange={e => setPark(e.target.value)}
+              id="park"
+            />
+            <button
+              onClick={() => console.log(parkData, parks[parkData])}
+              style={{ marginLeft: "10px" }}
+            >
+              Add Park
+            </button>
+          </div>
+          <hr />
+          <datalist id="parks">
+            {Object.keys(parks).map(park => (
+              <option value={park} key={park} />
+            ))}
+          </datalist>
+          {/* <button onClick={() => console.log(parkData, parks[parkData])}>Testing</button> */}
+          <br />
+          {/* End Testing */}
+          <h3 className="w3-center" style={{fontFamily: "Sorts Mill Goudy",}}>NEED SOME IN-TENTS INSPIRATION?</h3>
           <p className="w3-center">
             <em>
-              Here are some of In-Tents members favorite parks to visit!
+              Not sure where to go on your next adventure? Check out some of our
+              favorites below
               <br /> Click on the images for more info
             </em>
           </p>
@@ -135,12 +198,28 @@ function search() {
                 onClick={onImgClick}
               />
             </div>
-            <button
+            {/* <button
               className="w3-button w3-padding-large w3-black"
               style={{ marginTop: "15px", opacity: "0.6" }}
             >
               Search your favorite national park
-            </button>
+            </button> */}
+            {/* <UncontrolledDropdown></UncontrolledDropdown> */}
+
+            {/* <div className="w3-dropdown-hover">
+              <button className="w3-button">Hover Over Me!</button>
+              <div className="w3-dropdown-content w3-bar-block w3-border">
+                <a href="#" className="w3-bar-item w3-button">
+                  Link 1
+                </a>
+                <a href="#" className="w3-bar-item w3-button">
+                  Link 2
+                </a>
+                <a href="#" className="w3-bar-item w3-button">
+                  Link 3
+                </a>
+              </div>
+            </div> */}
           </div>
 
           {/* <!-- Modal for full size images on click--></div> */}
@@ -168,6 +247,8 @@ function search() {
             </div>
           </Modal>
         </div>
+        <div />
+        <div />
       </div>
     </div>
   );
