@@ -3,9 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 import Modal from "../../modals";
-import Container from "../../Container";
+// import Container from "../../Container";
 import parks from "./parks";
+import Axios from "axios";
 // import Dropdown from "../../Dropdown";
+
+// Axios.get("/api/search/" + "parkid" ).then(data => {
+//   console.log(data.data);
+// })
 
 function search() {
   const [modalActive, showModal] = useState();
@@ -85,8 +90,11 @@ function search() {
             />
             <button
               onClick={() => {
-                setUserParks([...userParks, parkData]);
-                setPark("");
+                Axios.get("/api/users/search/" + parks[parkData]).then(({data}) =>{
+                  console.log(data);
+                  // setUserParks([...userParks, data]);
+                  // setPark("");
+                })
               }}
               style={{ marginLeft: "10px" }}
             >
