@@ -55,6 +55,17 @@ const localLogin = new LocalStrategy(localOptions, function (
         });
 });
 
+passport.serializeUser(function (user, cb) {
+    cb(null, user.id);
+});
+
+passport.deserializeUser(function (id, cb) {
+    db.users.findById(id, function (err, user) {
+        if (err) { return cb(err); }
+        cb(null, user);
+    });
+});
+
 // Setup options for JWT Strategy
 const jwtOptions = {
     // extract the jwt token we created from the header

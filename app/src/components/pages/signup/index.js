@@ -118,6 +118,18 @@ function profile(props) {
                   id="password"
                   autoComplete="current-password" />
               </FormControl>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="rePassword">Password</InputLabel>
+                <Input
+                  placeholder="Top Secret"
+                  className="input"
+                  name="rePassword"
+                  //value={password}
+                  //onChange={onChange}
+                  type="password"
+                  id="rePassword"
+                  autoComplete="current-password" />
+              </FormControl>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
