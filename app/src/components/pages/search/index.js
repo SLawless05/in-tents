@@ -97,8 +97,10 @@ function search() {
                   console.log(data.parks.data[0].fullname);
                   console.log(data.alerts.data[0].category)
                   console.log(data.alerts.data[0].title)
-                   // setUserParks([...userParks, data]);
-                  // setPark("");
+                  // set state and create if statement that loops through the alerts (if it has any), and if not leave blank & only display the rest of the info
+                  console.log(data.alerts.data[1].title);
+                  console.log(data.alerts.data[2].title);
+                  setPark("");
                 })
               }}
               style={{ marginLeft: "10px" }}
