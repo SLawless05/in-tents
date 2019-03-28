@@ -90,9 +90,14 @@ function search() {
             />
             <button
               onClick={() => {
-                Axios.get("/api/users/search/" + parks[parkData]).then(({data}) =>{
-                  console.log(data);
-                  // setUserParks([...userParks, data]);
+                Axios.get("/api/users/search/" + parks[parkData]).then(({ data }) => {
+                  console.log(data.parks.data);
+                  console.log(data.parks.data[0].directionsinfo);
+                  console.log(data.parks.data[0].weatherinfo);
+                  console.log(data.parks.data[0].fullname);
+                  console.log(data.alerts.data[0].category)
+                  console.log(data.alerts.data[0].title)
+                   // setUserParks([...userParks, data]);
                   // setPark("");
                 })
               }}
