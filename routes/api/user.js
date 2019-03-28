@@ -29,6 +29,12 @@ router.route("/search/:parkid").get(function(req, res) {
     "&api_key=" +
     api_key;
   Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results =>{
+
+    const parks = {
+      
+    }
+
+
     res.json({ parks: results[0].data, alerts: results[1].data })
   });
 });
