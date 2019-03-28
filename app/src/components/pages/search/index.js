@@ -91,9 +91,19 @@ function search() {
             <button
               onClick={() => {
                 Axios.get("/api/users/search/" + parks[parkData]).then(({data}) =>{
+                  // set state and create if statement that loops through the alerts (if it has any), and if not leave blank & only display the rest of the info
                   console.log(data);
+                  console.log(data.parks.data[0].weatherinfo);
+                  console.log(data.parks.data[0].directionsinfo);
+                  console.log(data.parks.data[0].directionsurl);
+                  console.log(data.alerts.data[0].title);
+                  console.log(data.alerts.data[1].title);
+                  console.log(data.alerts.data[2].title);
+                  // console.log(data.alerts.data[0].fullname);
+                  // data.parks.alerts.push('#alert');
+                  // $('#alert').append(data.alerts)
                   // setUserParks([...userParks, data]);
-                  // setPark("");
+                  setPark("");
                 })
               }}
               style={{ marginLeft: "10px" }}
