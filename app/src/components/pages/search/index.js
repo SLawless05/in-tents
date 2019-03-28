@@ -85,7 +85,6 @@ class search extends React.Component {
                 Search parks in the dropdown menu below
               </h3>
             </div>
-
             {/* Start Testing */}
             <div
               style={{
@@ -115,7 +114,6 @@ class search extends React.Component {
                     });
                   });
                   // set state and create if statement that loops through the alerts (if it has any), and if not leave blank & only display the rest of the info
-
                   console.log(this.state.parkInfo);
                   // console.log(data);
                   // console.log(data.parks.data[0].weatherinfo);
