@@ -14,14 +14,8 @@ class search extends React.Component {
     isModalActive: false,
     modalData: {},
     parkName: "",
-    userParks: [],
-    parkInfo: []
+    userParks: []
   };
-  // const [modalActive, showModal] = useState();
-  // const [modalData, setModalData] = useState({});
-  // const [parkData, setPark] = useState();
-  // const [userParks, setUserParks] = useState([]);
-  // const [parkInfo, setParkInfo] = useState([]);
 
   onImgClick = e => {
     this.setState({
@@ -107,27 +101,15 @@ class search extends React.Component {
               <button
                 onClick={() => {
                   const parkid = this.state.parkIds[this.state.parkName];
-                  Axios.get("/api/users/search/" + parkid).then(result => {
+                  Axios.get("/api/users/search/" + parkid).then(results => {
                     this.setState({
-                      parkInfo: result.data,
-                      userParks: [...this.state.userParks, this.state.parkName],
+                      userParks: [
+                        results.data.parkResults,
+                        ...this.state.userParks
+                      ],
                       parkName: ""
                     });
                   });
-                  // set state and create if statement that loops through the alerts (if it has any), and if not leave blank & only display the rest of the info
-
-                  console.log(this.state.parkInfo);
-                  // console.log(data);
-                  // console.log(data.parks.data[0].weatherinfo);
-                  // console.log(data.parks.data[0].directionsinfo);
-                  // console.log(data.parks.data[0].directionsurl);
-                  // console.log(data.alerts.data[0].title);
-                  // console.log(data.alerts.data[1].title);
-                  // console.log(data.alerts.data[2].title);
-                  // console.log(data.alerts.data[0].fullname);
-                  // data.parks.alerts.push('#alert');
-                  // $('#alert').append(data.alerts)
-                  //setPark("");
                 }}
                 style={{ marginLeft: "10px" }}
               >
@@ -144,7 +126,14 @@ class search extends React.Component {
               ))}
             </datalist>
             {this.state.userParks.length !== 0 &&
-              this.state.userParks.map(park => <p>{park}</p>)}
+              this.state.userParks.map(park => (
+                <div key={park.fullname}>
+                  <p>{park.fullname}</p>
+                  <p>{park.description}</p>
+                  <p>{park.weather}</p>
+                  {/* <p>{park.alerts}</p> */}
+                </div>
+              ))}
             <hr />
             {/* <button onClick={() => console.log(parkData, parks[parkData])}>Testing</button> */}
             <br />

@@ -28,14 +28,24 @@ router.route("/search/:parkid").get(function(req, res) {
     req.params.parkid +
     "&api_key=" +
     api_key;
-  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results =>{
+  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results => {
 
-    const parks = {
-      
+    const parks = results[0].data;
+    const alerts = results[1].data;
+    console.log(parks);
+    console.log(alerts);
+   
+    const parkResults = {
+      fullname: parks.data[0].fullname,
+      weather: parks.data[0].weatherinfo,
+      direction: parks.data[0].directionsinfo
+    };
+     
+    if(alerts.data.length !== 0){
+      parkResults.alerts = alerts.data.map(alert => alert);
     }
 
-
-    res.json({ parks: results[0].data, alerts: results[1].data })
+    res.json({ parkResults });
   });
 });
 
