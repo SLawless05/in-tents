@@ -1,9 +1,13 @@
 require("dotenv").config();
+
 //Express
 const express = require("express");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+const passport = require("passport");
+require("./services/passport");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
