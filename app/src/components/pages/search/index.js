@@ -3,11 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 import Modal from "../../modals";
-// import Container from "../../Container";
 import parks from "./parks";
 import Axios from "axios";
-// import Dropdown from "../../Dropdown";
-import { Link } from "react-router-dom";
 
 class search extends React.Component {
   state = {
@@ -15,7 +12,8 @@ class search extends React.Component {
     isModalActive: false,
     modalData: {},
     parkName: "",
-    userParks: []
+    userParks: [],
+    showAlert: true
   };
 
   onImgClick = e => {
@@ -122,18 +120,40 @@ class search extends React.Component {
                 <option value={park} key={park} />
               ))}
             </datalist>
+            {/* conditional rendering format */}
+
             {this.state.userParks.length !== 0 &&
               this.state.userParks.map(park => (
-                <div key={park.fullname} style={{ fontFamily: "Sorts Mill Goudy" }}>
-                  <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>{park.fullname}</h3>
+                <div
+                  key={park.fullname}
+                  style={{ fontFamily: "Sorts Mill Goudy" }}
+                >
+                  <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>
+                    {park.fullname}
+                  </h3>
                   <p>{park.description}</p>
                   <p>{park.weather}</p>
-                  <a href>{park.url}</a>
-                  {/* <p>{park.alerts}</p> */}
-                  <br></br>
+                  <a rel="noopener noreferrer" href={park.url} target="_blank">
+                    Check out this Park
+                  </a>
+                  <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>Alerts</h3>
+                  {park.alerts ? (
+                    park.alerts.map(alert => (
+                      <div style={{ fontFamily: "Sorts Mill Goudy" }}>
+                        <h4 style={{ fontFamily: "Sorts Mill Goudy" }}>{alert.title}</h4>
+                        <p>{alert.description}</p>
+                        <a target="_blank" href={alert.url}>
+                          More info
+                        </a>
+                      </div>
+                    ))
+                  ) : (
+                    <p>This park has no alerts at this time.</p>
+                  )}
+                  <br />
+                  <br />
                   <button>Add to profile</button>
                 </div>
-                
               ))}
             <hr />
             {/* <button onClick={() => console.log(parkData, parks[parkData])}>Testing</button> */}

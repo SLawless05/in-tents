@@ -41,7 +41,6 @@ router.route("/search/:parkid").get(function(req, res) {
       direction: parks.data[0].directionsinfo,
       description: parks.data[0].description,
       url: parks.data[0].url,
-      // alerts: alerts.data[0].title
     };
      
     if(alerts.data.length !== 0){
