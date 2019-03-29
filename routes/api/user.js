@@ -5,17 +5,57 @@ const jwt = require("jsonwebtoken");
 const config = require("../../config");
 const passport = require("passport");
 const { requireSignin, requireAuth } = require("../auth");
+const axios = require("axios");
 
-
-router.route("/profile")
+router
+  .route("/profile")
   .post(User.create);
-router.route("/profile/:id")
+
+router
+  .route("/profile/:id")
   .get(User.findOneById)
   .put(User.update);
+
 router
   .route("/profile/favorites/:id")
   .delete(User.remove);
 
+router.route("/profile/favorites/:id").delete(User.remove);
+
+router.route("/search/:parkid").get(function(req, res) {
+  var api_key = "NkBMV8ML8wzt4kc1GupeltXUV2R4bq5sllZv6eSy";
+  var parkURL =
+    "https://developer.nps.gov/api/v1/parks?parkCode=" +
+    req.params.parkid +
+    "&api_key=" +
+    api_key;
+  var alertURL =
+    "https://developer.nps.gov/api/v1/alerts?parkCode=" +
+    req.params.parkid +
+    "&api_key=" +
+    api_key;
+  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results => {
+
+    const parks = results[0].data;
+    const alerts = results[1].data;
+    console.log(parks);
+    console.log(alerts);
+   
+    const parkResults = {
+      fullname: parks.data[0].fullname,
+      weather: parks.data[0].weatherinfo,
+      direction: parks.data[0].directionsinfo,
+      description: parks.data[0].description,
+      url: parks.data[0].url,
+    };
+     
+    if(alerts.data.length !== 0){
+      parkResults.alerts = alerts.data.map(alert => alert);
+    }
+
+    res.json({ parkResults });
+  });
+});
 
 function tokenizer(user) {
   return jwt.sign(
@@ -26,20 +66,19 @@ function tokenizer(user) {
   );
 }
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.send("Welcome to the v1 routes!");
 });
 
-router.get("/protected", requireAuth, function (req, res) {
+router.get("/protected", requireAuth, function(req, res) {
   res.send("You have been protected!");
 });
 
-router.post("/signin", requireSignin, function (req, res) {
-  console.log(req.user);
+router.post("/signin", requireSignin, function(req, res) {
   res.json({ token: tokenizer(req.user) });
 });
 
-router.post("/signup", function (req, res) {
+router.post("/signup", function(req, res) {
   const { email, password } = req.body;
 
   if (!email || !password) {
