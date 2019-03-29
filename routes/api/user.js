@@ -28,8 +28,9 @@ router.route("/search/:parkid").get(function(req, res) {
     req.params.parkid +
     "&api_key=" +
     api_key;
-  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results =>{
+  Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results => {
 
+<<<<<<< HEAD
     const parks = {
       fullname: data.parks.data[0].fullname,
       weather: data.parks.data[0].weatherinfo,
@@ -45,6 +46,27 @@ router.route("/search/:parkid").get(function(req, res) {
     }
 
     res.json({ parks: results[0].data, alerts: results[1].data })
+=======
+    const parks = results[0].data;
+    const alerts = results[1].data;
+    console.log(parks);
+    console.log(alerts);
+   
+    const parkResults = {
+      fullname: parks.data[0].fullname,
+      weather: parks.data[0].weatherinfo,
+      direction: parks.data[0].directionsinfo,
+      description: parks.data[0].description,
+      url: parks.data[0].url,
+      // alerts: alerts.data[0].title
+    };
+     
+    if(alerts.data.length !== 0){
+      parkResults.alerts = alerts.data.map(alert => alert);
+    }
+
+    res.json({ parkResults });
+>>>>>>> a27be5ef0739566877cdda8cc98b95888ba934b6
   });
 });
 
