@@ -7,6 +7,7 @@ import Modal from "../../modals";
 import parks from "./parks";
 import Axios from "axios";
 // import Dropdown from "../../Dropdown";
+import { Link } from "react-router-dom";
 
 class search extends React.Component {
   state = {
@@ -115,10 +116,6 @@ class search extends React.Component {
               >
                 Add Park
               </button>
-              <div className="w3-row">
-                <div className="w3-col s3 w3-center" id="alert" />
-                <div className="w3-col s9 w3-center" id="parkInfo" />
-              </div>
             </div>
             <datalist id="parks">
               {Object.keys(this.state.parkIds).map(park => (
@@ -127,12 +124,16 @@ class search extends React.Component {
             </datalist>
             {this.state.userParks.length !== 0 &&
               this.state.userParks.map(park => (
-                <div key={park.fullname}>
-                  <p>{park.fullname}</p>
+                <div key={park.fullname} style={{ fontFamily: "Sorts Mill Goudy" }}>
+                  <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>{park.fullname}</h3>
                   <p>{park.description}</p>
                   <p>{park.weather}</p>
+                  <a href>{park.url}</a>
                   {/* <p>{park.alerts}</p> */}
+                  <br></br>
+                  <button>Add to profile</button>
                 </div>
+                
               ))}
             <hr />
             {/* <button onClick={() => console.log(parkData, parks[parkData])}>Testing</button> */}

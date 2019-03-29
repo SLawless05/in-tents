@@ -38,7 +38,10 @@ router.route("/search/:parkid").get(function(req, res) {
     const parkResults = {
       fullname: parks.data[0].fullname,
       weather: parks.data[0].weatherinfo,
-      direction: parks.data[0].directionsinfo
+      direction: parks.data[0].directionsinfo,
+      description: parks.data[0].description,
+      url: parks.data[0].url,
+      // alerts: alerts.data[0].title
     };
      
     if(alerts.data.length !== 0){
