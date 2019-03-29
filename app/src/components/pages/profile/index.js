@@ -1,6 +1,4 @@
-// import React from "react";
-
-import React from 'react';
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -16,58 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom'
-
-//
-
 import { Link } from 'react-router-dom';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-
-const newPalette = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#ea7b12",
-    },
-    secondary: {
-      main: "#391356",
-    },
-  },
-});
-
-const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-  },
-  avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing.unit,
-  },
-  submit: {
-    marginTop: theme.spacing.unit * 3,
-  },
-});
 
 function profile(props) {
-  const { classes } = props;
 
   return (
     <div>
@@ -84,75 +33,37 @@ function profile(props) {
           backgroundSize: "cover"
         }}
       >
-        <main className={classes.main}>
-          <CssBaseline />
-          <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form className={classes.form}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input
-                  placeholder="burrito@taco.com"
-                  className="input"
-                  name="email"
-                  //value={email}
-                  //onChange={onChange}
-                  type="text"
-                  autoComplete="email"
-                  autoFocus />
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <Input
-                  placeholder="Top Secret"
-                  className="input"
-                  name="password"
-                  //value={password}
-                  //onChange={onChange}
-                  type="password"
-                  id="password"
-                  autoComplete="current-password" />
-              </FormControl>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              //onClick={}
-
-              >
-                Log in
-              </Button>
-
-              <Typography component="p">
-                Don't have an account? <Link to={'/profile'}>Create one</Link>
+      <div
+          className="w3-content w3-container w3-padding-64"
+          id="portfolio"
+          style={{ backgroundColor: "rbga(255, 255, 255, 0.5)" }}
+      >
+      <div>
+            <h1
+              style={{
+                textAlign: "center",
+                display: "block",
+                fontFamily: "Sorts Mill Goudy",
+                fontSize: "55px"
+              }}
+            >
+              Profile
+            </h1>
+            <div>
+            <Typography component="p">
+                Don't have an account? <Link to={'/signup'}>Create one</Link>
               </Typography>
-            </form>
-          </Paper>
-        </main>
-
+            </div>
       </div>
+    </div>
+    </div>
     </div>
 
   );
-}
-
-profile.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+  }
 
 
-export default withStyles(styles)(profile);
+export default (profile);
 
 
 
