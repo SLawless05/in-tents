@@ -13,6 +13,8 @@ import Wrapper from "./components/pages/Wrapper";
 import about from "./components/pages/about";
 import login from "./components/pages/login";
 import signup from "./components/pages/signup";
+import Auth from './modules/Auth';
+
 
 function App() {
   return (

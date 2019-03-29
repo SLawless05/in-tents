@@ -4,15 +4,15 @@ const db = require("../../models");
 const jwt = require("jsonwebtoken");
 const config = require("../../config");
 const passport = require("passport");
-const requireSignin = passport.authenticate("local", { session: false });
-const requireAuth = passport.authenticate("jwt", { session: false });
+const { requireSignin, requireAuth } = require("../auth");
+
 
 router.route("/profile")
   .post(User.create);
 router.route("/profile/:id")
   .get(User.findOneById)
   .put(User.update);
-  router
+router
   .route("/profile/favorites/:id")
   .delete(User.remove);
 
@@ -35,6 +35,7 @@ router.get("/protected", requireAuth, function (req, res) {
 });
 
 router.post("/signin", requireSignin, function (req, res) {
+  console.log(req.user);
   res.json({ token: tokenizer(req.user) });
 });
 
@@ -53,6 +54,7 @@ router.post("/signup", function (req, res) {
       }
       //create new user object
       const user = new db.User({ email, password });
+      console.log(user);
       // save the user
       user.save().then(user => {
         // respond with the success if the user existed

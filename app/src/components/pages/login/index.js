@@ -1,6 +1,4 @@
-// import React from "react";
-
-import React from 'react';
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -17,6 +15,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom'
 
+import axios from 'axios';
 //
 
 import { Link } from 'react-router-dom';
@@ -66,8 +65,11 @@ const styles = theme => ({
   },
 });
 
-function profile(props) {
+function logIn(props) {
   const { classes } = props;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div>
@@ -100,8 +102,8 @@ function profile(props) {
                   placeholder="burrito@taco.com"
                   className="input"
                   name="email"
-                  //value={email}
-                  //onChange={onChange}
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                   type="text"
                   autoComplete="email"
                   autoFocus />
@@ -112,8 +114,8 @@ function profile(props) {
                   placeholder="Top Secret"
                   className="input"
                   name="password"
-                  //value={password}
-                  //onChange={onChange}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                   type="password"
                   id="password"
                   autoComplete="current-password" />
@@ -128,14 +130,28 @@ function profile(props) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-              //onClick={}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (email !== "" && password !== "") {
+
+                    axios.post('/api/users/signin', {
+                      email: email,
+                      password: password
+                    })
+
+                    console.log("Great Success");
+                    // email = "";
+                    // password = "";
+                    // rePassword = "";
+                  }
+                }}
 
               >
-                Log in
+                Login
               </Button>
 
               <Typography component="p">
-                Don't have an account? <Link to={'/profile'}>Create one</Link>
+                Don't have an account? <Link to={'/signup'}>Create one</Link>
               </Typography>
             </form>
           </Paper>
@@ -147,12 +163,12 @@ function profile(props) {
   );
 }
 
-profile.propTypes = {
+logIn.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(profile);
+export default withStyles(styles)(logIn);
 
 
 

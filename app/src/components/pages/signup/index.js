@@ -1,6 +1,4 @@
-// import React from "react";
-
-import React from 'react';
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -16,13 +14,16 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom'
-
-//
-
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+
+import Auth from '../../../modules/Auth';
+
+//
+
 
 const newPalette = createMuiTheme({
   palette: {
@@ -66,8 +67,12 @@ const styles = theme => ({
   },
 });
 
-function profile(props) {
+function signUp(props) {
   const { classes } = props;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
 
   return (
     <div>
@@ -91,7 +96,7 @@ function profile(props) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign Up
             </Typography>
             <form className={classes.form}>
               <FormControl margin="normal" required fullWidth>
@@ -100,8 +105,8 @@ function profile(props) {
                   placeholder="burrito@taco.com"
                   className="input"
                   name="email"
-                  //value={email}
-                  //onChange={onChange}
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                   type="text"
                   autoComplete="email"
                   autoFocus />
@@ -112,8 +117,8 @@ function profile(props) {
                   placeholder="Top Secret"
                   className="input"
                   name="password"
-                  //value={password}
-                  //onChange={onChange}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                   type="password"
                   id="password"
                   autoComplete="current-password" />
@@ -124,47 +129,68 @@ function profile(props) {
                   placeholder="Top Secret"
                   className="input"
                   name="rePassword"
-                  //value={password}
-                  //onChange={onChange}
+                  value={rePassword}
+                  onChange={e => setRePassword(e.target.value)}
                   type="password"
                   id="rePassword"
                   autoComplete="current-password" />
               </FormControl>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-              //onClick={}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (password === rePassword && email !== "" && password !== "") {
+                    console.log("Made it this far");
+
+                    axios.post('/api/users/signup', {
+                      email: email,
+                      password: password
+                    }).then(function (response) {
+                    console.log(response.data.token);
+
+                    setEmail("");
+                    setPassword("");
+                    setRePassword("");
+
+                    Auth.authenticateUser(response.data.token)
+                    console.log("User Authenitcated");
+
+                    
+
+                    }).catch(function (error) {
+
+                    console.log(error);
+
+                    });
+
+                      
+                    
+                  }
+                }}
 
               >
-                Log in
+                Sign Up
               </Button>
-
-              <Typography component="p">
-                Don't have an account? <Link to={'/profile'}>Create one</Link>
-              </Typography>
             </form>
           </Paper>
         </main>
 
       </div>
-    </div>
+    </div >
 
   );
 }
 
-profile.propTypes = {
+signUp.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(profile);
+export default withStyles(styles)(signUp);
 
 
 
