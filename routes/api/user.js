@@ -30,23 +30,6 @@ router.route("/search/:parkid").get(function(req, res) {
     api_key;
   Promise.all([axios.get(parkURL), axios.get(alertURL)]).then(results => {
 
-<<<<<<< HEAD
-    const parks = {
-      fullname: data.parks.data[0].fullname,
-      weather: data.parks.data[0].weatherinfo,
-      direction: data.parks.data[0].directionsinfo,
-    }
-    if(data.alerts.data === []){
-      console.log("nothing to show")
-    }else{
-      // console.log(data.alerts.data[0].title);
-      // console.log(data.alerts.data[1].title);
-      results[1].data.map(alert => alert.title);
-      
-    }
-
-    res.json({ parks: results[0].data, alerts: results[1].data })
-=======
     const parks = results[0].data;
     const alerts = results[1].data;
     console.log(parks);
@@ -66,7 +49,6 @@ router.route("/search/:parkid").get(function(req, res) {
     }
 
     res.json({ parkResults });
->>>>>>> a27be5ef0739566877cdda8cc98b95888ba934b6
   });
 });
 
