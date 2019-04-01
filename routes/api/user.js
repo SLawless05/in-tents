@@ -33,7 +33,7 @@ router
       return next(err);
     });
   });
- //
+  
 
 
 
@@ -57,7 +57,7 @@ router.route("/search/:parkid").get(function(req, res) {
     console.log(alerts);
    
     const parkResults = {
-      fullname: parks.data[0].fullname,
+      fullname: parks.data[0].fullName,
       weather: parks.data[0].weatherinfo,
       direction: parks.data[0].directionsinfo,
       description: parks.data[0].description,

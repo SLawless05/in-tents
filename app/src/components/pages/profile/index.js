@@ -44,7 +44,7 @@ class profile extends React.Component {
 
     this.state = {
       savedParks: '',
-      user: {}
+      user: ''
     };
   }
 
@@ -58,17 +58,10 @@ class profile extends React.Component {
         }).then(function (response) {
         console.log(response);
 
-        //this.state.user.email="";
-        //this.state.user.password="";
+        this.setState({
+          
 
-        Auth.authenticateUser(response.data.token)
-        console.log("User Authenitcated");
-
-        // <Redirect to={{
-        // pathname: '/profile',
-        // state: { from: props.location }
-        // }}/>
-        this.props.history.push('/profile');
+        });
 
         }).catch(function (error) {
 
