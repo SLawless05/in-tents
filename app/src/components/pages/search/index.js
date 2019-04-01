@@ -140,7 +140,9 @@ class search extends React.Component {
                   {park.alerts ? (
                     park.alerts.map(alert => (
                       <div style={{ fontFamily: "Sorts Mill Goudy" }}>
-                        <h4 style={{ fontFamily: "Sorts Mill Goudy" }}>{alert.title}</h4>
+                        <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>
+                          {alert.title}
+                        </h3>
                         <p>{alert.description}</p>
                         <a target="_blank" href={alert.url}>
                           More info
@@ -150,7 +152,6 @@ class search extends React.Component {
                   ) : (
                     <p>This park has no alerts at this time.</p>
                   )}
-                  <br />
                   <br />
                   <button>Add to profile</button>
                 </div>
@@ -267,6 +268,15 @@ class search extends React.Component {
                 />
               </div>
             </div>
+            <div>
+              <hr />
+                <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>
+                  Road tripping to your next adventure? 
+                </h3>
+                <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Check out our friends
+                  over at "Are We There Yet?" to help you get started</h3>
+                  <button style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Plan my road trip</button>
+              </div>
 
             {/* <!-- Modal for full size images on click--></div> */}
             <Modal
@@ -304,6 +314,8 @@ class search extends React.Component {
               </div>
             </Modal>
           </div>
+
+          <div />
           <div />
           <div />
         </div>
