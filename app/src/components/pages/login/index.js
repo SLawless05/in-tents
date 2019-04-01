@@ -16,12 +16,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom'
 
 import axios from 'axios';
+import Auth from '../../../modules/Auth';
 //
 
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+
+import { withRouter } from "react-router";
 
 const newPalette = createMuiTheme({
   palette: {
@@ -65,12 +68,54 @@ const styles = theme => ({
   },
 });
 
-function logIn(props) {
-  const { classes } = props;
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+class LogIn extends React.Component {
+  constructor(props, context) {
+    super(props, context);
 
+    const storedMessage = localStorage.getItem('successMessage');
+    let successMessage = '';
+
+    if (storedMessage) {
+      successMessage = storedMessage;
+      localStorage.removeItem('successMessage');
+    }
+
+    this.state = {
+      errors: {},
+      successMessage,
+      user: {
+        email: '',
+        password: ''
+      }
+    };
+
+    this.changeUser = this.changeUser.bind(this);
+  }
+
+  // const { classes } = props;
+
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  changeUser(event) {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
+    this.setState({
+      user
+    });
+  }
+
+  render() {
+
+  const { classes } = this.props;
   return (
     <div>
       <div
@@ -93,7 +138,7 @@ function logIn(props) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Log In
             </Typography>
             <form className={classes.form}>
               <FormControl margin="normal" required fullWidth>
@@ -102,8 +147,8 @@ function logIn(props) {
                   placeholder="burrito@taco.com"
                   className="input"
                   name="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={this.state.user.email}
+                  onChange={this.changeUser}
                   type="text"
                   autoComplete="email"
                   autoFocus />
@@ -114,8 +159,8 @@ function logIn(props) {
                   placeholder="Top Secret"
                   className="input"
                   name="password"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  value={this.state.user.password}
+                  onChange={this.changeUser}
                   type="password"
                   id="password"
                   autoComplete="current-password" />
@@ -132,17 +177,32 @@ function logIn(props) {
                 className={classes.submit}
                 onClick={(e) => {
                   e.preventDefault();
-                  if (email !== "" && password !== "") {
-
+                  if (this.state.user.email !== "" && this.state.user.password !== "") {
+                    let tempmail = this.state.user.email;
+                    console.log(tempmail);
                     axios.post('/api/users/signin', {
-                      email: email,
-                      password: password
-                    })
+                      email: this.state.user.email,
+                      password: this.state.user.password
+                    }).then(function (response) {
+                    console.log(response.data.token);
 
-                    console.log("Great Success");
-                    // email = "";
-                    // password = "";
-                    // rePassword = "";
+                    //this.state.user.email="";
+                    //this.state.user.password="";
+
+                    Auth.authenticateUser(response.data.token, tempmail)
+                    console.log("User Authenitcated");
+
+                    // <Redirect to={{
+                    // pathname: '/profile',
+                    // state: { from: props.location }
+                    // }}/>
+                    this.props.history.push('/profile');
+
+                    }).catch(function (error) {
+
+                    console.log(error);
+
+                    });
                   }
                 }}
 
@@ -162,13 +222,18 @@ function logIn(props) {
 
   );
 }
+}
 
-logIn.propTypes = {
+LogIn.propTypes = {
   classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
+LogIn.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
-export default withStyles(styles)(logIn);
+export default withRouter(withStyles(styles)(LogIn));
 
 
 

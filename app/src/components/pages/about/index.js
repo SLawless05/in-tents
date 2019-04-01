@@ -19,9 +19,9 @@ function about() {
 
       <div className="w3-content w3-container w3-padding-65" id="about">
         <h1 className="w3-center" style={{fontFamily: "Sorts Mill Goudy"}}>ABOUT IN-TENTS</h1>
-        <p className="w3-center" style={{fontFamily: "Sorts Mill Goudy"}}>
-          <h3 style={{fontFamily: "Sorts Mill Goudy"}}>We love the outdoors!</h3>
-        </p>
+        
+        <h3 className="w3-center" style={{fontFamily: "Sorts Mill Goudy"}}>We love the outdoors!</h3>
+        
         <p className style={{fontFamily: "Sorts Mill Goudy", fontSize: "20px"}} >
           At In-Tents, we're a bit intense about our love for all things outdoor
           and adventure! We know that when planning your great adventures it's
