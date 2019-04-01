@@ -57,7 +57,11 @@ router.route("/search/:parkid").get(function(req, res) {
     console.log(alerts);
    
     const parkResults = {
+<<<<<<< HEAD
       fullname: parks.data[0].fullName,
+=======
+      fullName: parks.data[0].fullName,
+>>>>>>> c22ee4a4aa225e14f3dbea7d109ce87f2f9a8b7c
       weather: parks.data[0].weatherinfo,
       direction: parks.data[0].directionsinfo,
       description: parks.data[0].description,

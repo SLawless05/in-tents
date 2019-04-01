@@ -112,7 +112,7 @@ class search extends React.Component {
                 }}
                 style={{ marginLeft: "10px" }}
               >
-                Add Park
+                Search Park
               </button>
             </div>
             <datalist id="parks">
@@ -125,11 +125,11 @@ class search extends React.Component {
             {this.state.userParks.length !== 0 &&
               this.state.userParks.map(park => (
                 <div
-                  key={park.fullname}
+                  key={park.fullName}
                   style={{ fontFamily: "Sorts Mill Goudy" }}
                 >
                   <h3 style={{ fontFamily: "Sorts Mill Goudy" }}>
-                    {park.fullname}
+                    {park.fullName}
                   </h3>
                   <p>{park.description}</p>
                   <p>{park.weather}</p>
@@ -275,7 +275,7 @@ class search extends React.Component {
                 </h3>
                 <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Check out our friends
                   over at "Are We There Yet?" to help you get started</h3>
-                  <button style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Plan my road trip</button>
+                  <button style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center", marginLeft: "44%" }}>Plan my road trip</button>
               </div>
 
             {/* <!-- Modal for full size images on click--></div> */}
