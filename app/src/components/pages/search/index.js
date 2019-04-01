@@ -275,6 +275,9 @@ class search extends React.Component {
                 </h3>
                 <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Check out our friends
                   over at "Are We There Yet?" to help you get started</h3>
+                  <a target="_blank" href={alert.url}>
+                          More info
+                        </a>
                   <button style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center", marginLeft: "44%" }}>Plan my road trip</button>
               </div>
 

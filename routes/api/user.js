@@ -58,8 +58,8 @@ router.route("/search/:parkid").get(function(req, res) {
    
     const parkResults = {
       fullName: parks.data[0].fullName,
-      weather: parks.data[0].weatherinfo,
-      direction: parks.data[0].directionsinfo,
+      weather: parks.data[0].weatherInfo,
+      direction: parks.data[0].directionsInfo,
       description: parks.data[0].description,
       url: parks.data[0].url,
     };
