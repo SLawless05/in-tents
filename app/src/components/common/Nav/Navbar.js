@@ -23,7 +23,7 @@ function Navbar() {
           </div>
         ) : (
           <div className="w3-col s3">
-            <Link to="/login" className="w3-button w3-block w3-black">LOG ON</Link>
+            <Link to="/login" className="w3-button w3-block w3-black">LOG IN</Link>
           </div>
         )}
       </div>

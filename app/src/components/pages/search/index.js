@@ -275,10 +275,10 @@ class search extends React.Component {
                 </h3>
                 <h3 className="w3-center" style={{ fontFamily: "Sorts Mill Goudy", textAlign: "center" }}>Check out our friends
                   over at "Are We There Yet?" to help you get started</h3>
-                  <div><a href={"https://lychee-sundae-50558.herokuapp.com/"}>
-                  <button
+                  <div><a target="_blank" href={"https://lychee-sundae-50558.herokuapp.com/"}>
+                  <button 
                   className="w3-button w3-padding-large w3-black"
-                  style={{ opacity: "0.6", fontFamily: "Sorts Mill Goudy", textAlign: "center", marginLeft: "44%"}}
+                  style={{ opacity: "0.6", fontFamily: "Sorts Mill Goudy", textAlign: "center", marginLeft: "42%"}}
                   >
                   Plan my road trip
                   </button></a></div>
