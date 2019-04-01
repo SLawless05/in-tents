@@ -6,6 +6,7 @@ const config = require("../../config");
 const passport = require("passport");
 const { requireSignin, requireAuth } = require("../auth");
 const axios = require("axios");
+const express = require('express');
 
 router
   .route("/profile")
@@ -18,14 +19,23 @@ router
   .delete(User.remove);
 
 router
-  .get("/profile/favorites", (req, res) => {
-    res.status(200).json({
-    message: "You're authorized to see this secret message.",
-    // user values passed through from auth middleware
-    user: req.user
+  .post("/profile/favorites", (req, res) => {
+    const { email } = req.body;
+    db.User.findOne({ email })
+      .then(dbuser => {
+      
+      return res.status(200).json({
+      message: dbuser.savedPlaces,
+      user: dbuser.email
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
   });
-});
-  
+ //
+
+
 
 router.route("/search/:parkid").get(function(req, res) {
   var api_key = "NkBMV8ML8wzt4kc1GupeltXUV2R4bq5sllZv6eSy";

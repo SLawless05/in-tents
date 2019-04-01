@@ -18,13 +18,15 @@ import { Link } from 'react-router-dom';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Auth from '../../../modules/Auth';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import axios from 'axios';
+import App from '../../../App';
 
 const UserData = ({ savedParks, user }) => (
   <MuiThemeProvider>
   <Card className="container">
     <CardTitle
-      title="UserData"
-      subtitle="Here is your UserData"
+      title="User"
+      subtitle="Here is your Favorite Parks"
     />
   {savedParks && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{savedParks}</CardText>}
   </Card>
@@ -46,23 +48,50 @@ class profile extends React.Component {
     };
   }
 
-    componentDidMount() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('get', '/api/users/profile/favorites');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // set the authorization HTTP header
-    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        console.log(xhr.response);
-        this.setState({
-          savedParks: xhr.response.message,
-          user: xhr.response.user
-        });
-      }
-    });
-    xhr.send();
+  componentDidMount() {
+      let tempMail = Auth.getEmail();
+
+      axios.post('/api/users/profile/favorites', {
+
+          email: tempMail
+        
+        }).then(function (response) {
+        console.log(response);
+
+        //this.state.user.email="";
+        //this.state.user.password="";
+
+        Auth.authenticateUser(response.data.token)
+        console.log("User Authenitcated");
+
+        // <Redirect to={{
+        // pathname: '/profile',
+        // state: { from: props.location }
+        // }}/>
+        this.props.history.push('/profile');
+
+        }).catch(function (error) {
+
+        console.log(error);
+
+      });
+
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('get', '/api/users/profile/favorites');
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // // set the authorization HTTP header
+    // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    // xhr.responseType = 'json';
+    // xhr.addEventListener('load', () => {
+    //   if (xhr.status === 200) {
+    //     console.log(xhr.response);
+    //     this.setState({
+    //       savedParks: xhr.response.message,
+    //       user: xhr.response.user
+    //     });
+    //   }
+    // });
+    // xhr.send();
   }
 
 render() {

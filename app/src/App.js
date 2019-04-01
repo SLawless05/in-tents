@@ -57,7 +57,6 @@ class App extends Component {
     super(props);
     this.state = {
       authenticated: false,
-      token: ""
     }
   };
 
