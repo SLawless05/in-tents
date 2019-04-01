@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Auth from '../../../modules/Auth';
+import App from '../../../App';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
@@ -14,10 +16,16 @@ function Navbar() {
         </div>
         <div className="w3-col s3">
           <Link to="/search" className="w3-button w3-block w3-black">SEARCH</Link>
-        </div>
-        <div className="w3-col s3">
-          <Link to="/login" className="w3-button w3-block w3-black">LOG ON</Link>
-        </div>
+        </div>  
+        {Auth.isUserAuthenticated() ? (
+          <div className="w3-col s3">
+            <Link to="/profile" className="w3-button w3-block w3-black">PROFILE</Link>
+          </div>
+        ) : (
+          <div className="w3-col s3">
+            <Link to="/login" className="w3-button w3-block w3-black">LOG ON</Link>
+          </div>
+        )}
       </div>
     </div>
   );
