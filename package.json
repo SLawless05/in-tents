@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "install": "cd app && yarn",
-    "prestart": "yarn client:build",
+    "build": "yarn client:build",
     "start": "node server.js",
     "dev": "concurrently --kill-others \"yarn server:dev\" \"yarn client:start\"",
     "server:start": "node server.js",
