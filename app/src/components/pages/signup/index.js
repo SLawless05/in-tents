@@ -37,6 +37,14 @@ const newPalette = createMuiTheme({
 });
 
 const styles = theme => ({
+  palette: {
+    primary: {
+      main: "#ea7b12",
+    },
+    secondary: {
+      main: "#391356",
+    },
+  },
   main: {
     width: 'auto',
     display: 'block', // Fix IE 11 issue.
@@ -64,6 +72,8 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
+    color: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
 });
 
@@ -89,6 +99,7 @@ function signUp(props) {
           backgroundSize: "cover"
         }}
       >
+        <>
         <main className={classes.main}>
           <CssBaseline />
           <Paper className={classes.paper}>
@@ -159,7 +170,11 @@ function signUp(props) {
                     Auth.authenticateUser(response.data.token)
                     console.log("User Authenitcated");
 
-                    
+                    this.props.history.push('/profile');
+                    // <Redirect to={{
+                    // pathname: '/profile',
+                    // state: { from: props.location }
+                    // }}/>
 
                     }).catch(function (error) {
 
@@ -178,15 +193,21 @@ function signUp(props) {
             </form>
           </Paper>
         </main>
+        </>
 
       </div>
     </div >
 
   );
+
 }
 
 signUp.propTypes = {
   classes: PropTypes.object.isRequired,
+};
+
+signUp.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 

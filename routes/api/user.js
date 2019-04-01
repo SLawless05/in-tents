@@ -14,13 +14,18 @@ router
 router
   .route("/profile/:id")
   .get(User.findOneById)
-  .put(User.update);
-
-router
-  .route("/profile/favorites/:id")
+  .put(User.update)
   .delete(User.remove);
 
-router.route("/profile/favorites/:id").delete(User.remove);
+router
+  .get("/profile/favorites", (req, res) => {
+    res.status(200).json({
+    message: "You're authorized to see this secret message.",
+    // user values passed through from auth middleware
+    user: req.user
+  });
+});
+  
 
 router.route("/search/:parkid").get(function(req, res) {
   var api_key = "NkBMV8ML8wzt4kc1GupeltXUV2R4bq5sllZv6eSy";
@@ -57,6 +62,7 @@ router.route("/search/:parkid").get(function(req, res) {
   });
 });
 
+// *** passport code and routes *** -Lawless
 function tokenizer(user) {
   return jwt.sign(
     {

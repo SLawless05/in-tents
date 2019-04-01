@@ -16,12 +16,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom'
 
 import axios from 'axios';
+import Auth from '../../../modules/Auth';
 //
 
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+
+import { withRouter } from "react-router";
 
 const newPalette = createMuiTheme({
   palette: {
@@ -137,12 +140,26 @@ function logIn(props) {
                     axios.post('/api/users/signin', {
                       email: email,
                       password: password
-                    })
+                    }).then(function (response) {
+                    console.log(response.data.token);
 
-                    console.log("Great Success");
-                    // email = "";
-                    // password = "";
-                    // rePassword = "";
+                    setEmail("");
+                    setPassword("");
+
+                    Auth.authenticateUser(response.data.token)
+                    console.log("User Authenitcated");
+
+                    // <Redirect to={{
+                    // pathname: '/profile',
+                    // state: { from: props.location }
+                    // }}/>
+                    this.props.history.push('/profile');
+
+                    }).catch(function (error) {
+
+                    console.log(error);
+
+                    });
                   }
                 }}
 
@@ -165,6 +182,11 @@ function logIn(props) {
 
 logIn.propTypes = {
   classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+logIn.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 
