@@ -57,12 +57,12 @@ class profile extends React.Component {
           email: tempMail
         
         }).then(function (response) {
-        console.log(response.data.title);
+        console.log(response.data.user);
         console.log(response.data.message);
 
         self.setState({
-          savedParks: response.message,
-          user: response.title
+          savedParks: response.data.message,
+          user: response.data.user
         });
         
         self.forceUpdate();
