@@ -48,8 +48,9 @@ class profile extends React.Component {
     };
   }
 
-  componentDidMount() => {
+  componentDidMount() {
       let tempMail = Auth.getEmail();
+      let self = this;
 
       axios.post('/api/users/profile/favorites', {
 
