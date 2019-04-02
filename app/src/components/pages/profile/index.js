@@ -48,7 +48,7 @@ class profile extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() => {
       let tempMail = Auth.getEmail();
 
       axios.post('/api/users/profile/favorites', {
@@ -56,7 +56,8 @@ class profile extends React.Component {
           email: tempMail
         
         }).then(function (response) {
-        console.log(response);
+        console.log(response.title);
+        console.log(response.message);
 
         this.setState({
           savedParks: response.message,
