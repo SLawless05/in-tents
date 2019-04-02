@@ -65,7 +65,7 @@ class profile extends React.Component {
           user: response.title
         });
         
-        this.forceUpdate();
+        self.forceUpdate();
 
         }).catch(function (error) {
 
