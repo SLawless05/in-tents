@@ -57,8 +57,8 @@ class profile extends React.Component {
           email: tempMail
         
         }).then(function (response) {
-        console.log(response.title);
-        console.log(response.message);
+        console.log(response.data.title);
+        console.log(response.data.message);
 
         self.setState({
           savedParks: response.message,
