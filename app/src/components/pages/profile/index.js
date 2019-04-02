@@ -59,8 +59,8 @@ class profile extends React.Component {
         console.log(response);
 
         this.setState({
-          savedParks: response.data.message,
-          user: response.data.title
+          savedParks: response.message,
+          user: response.title
         });
 
         }).catch(function (error) {
