@@ -60,7 +60,7 @@ class profile extends React.Component {
         console.log(response.title);
         console.log(response.message);
 
-        this.setState({
+        self.setState({
           savedParks: response.message,
           user: response.title
         });
