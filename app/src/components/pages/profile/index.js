@@ -28,7 +28,7 @@ const UserData = ({ savedParks, user }) => (
       title="User"
       subtitle="Here is your Favorite Parks"
     />
-  {savedParks && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{savedParks}</CardText>}
+  {savedParks && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user}</strong>!<br />You have saved these parks! {savedParks}</CardText>}
   </Card>
   </MuiThemeProvider>
 );
