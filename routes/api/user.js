@@ -33,6 +33,21 @@ router
       return next(err);
     });
   });
+
+router
+  .post("/profile/favorites/add", (req, res) => {
+    const { email, park } = req.body;
+    db.User.findOne({ email })
+      .then(dbuser => {
+      dbuser.savedPlaces.push(park);
+      return res.status(200).json({
+      message: (park + " pushed to savedparks for " + dbuser.email),
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
+  });
   
 
 

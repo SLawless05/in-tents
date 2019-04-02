@@ -153,7 +153,7 @@ class search extends React.Component {
                     <p>This park has no alerts at this time.</p>
                   )}
                   <br />
-                  <button>Add to profile</button>
+                  <button id="favoriteButton" value="">Add to profile</button>
                 </div>
               ))}
             <hr />

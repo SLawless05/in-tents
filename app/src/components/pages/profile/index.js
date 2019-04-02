@@ -25,10 +25,9 @@ const UserData = ({ savedParks, user }) => (
   <MuiThemeProvider>
   <Card className="container">
     <CardTitle
-      title="User"
-      subtitle="Here is your Favorite Parks"
+      title="Favorite Parks"
     />
-  {savedParks && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user}</strong>!<br />You have saved these parks! {savedParks}</CardText>}
+  {savedParks && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user}</strong>!<br />You have saved these parks: Grand Canyon, Denali, Canyonlands {savedParks}</CardText>}
   </Card>
   </MuiThemeProvider>
 );
@@ -132,7 +131,7 @@ render() {
             </button></a></div>
             <div>
             <h3>
-            Favorite Parks
+            User Info
 
             <UserData savedParks={this.state.savedParks} user={this.state.user} />
 
