@@ -62,6 +62,7 @@ class profile extends React.Component {
           savedParks: response.message,
           user: response.title
         });
+        forceUpdate();
 
         }).catch(function (error) {
 
