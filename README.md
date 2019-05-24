@@ -1,7 +1,7 @@
 # Project 3: In-Tents
 
 ## Goal
-The goal of the project is to provide a resource where adventurers of all kinds can search for national parks to get up to date park information and receive alters for changes to park, trail, or campground availability.
+The goal of the project is to provide a resource where adventurers of all kinds can search for national parks to get up to date park information and receive alerts for changes to park, trail, or campground availability.
 
 ## MVP
 * User Authentication 
