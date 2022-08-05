@@ -31,7 +31,7 @@
     "jwt-simple": "^0.5.5",
     "material-ui": "^0.20.2",
     "moment": "^2.23.0",
-    "mongoose": "^5.0.17",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
